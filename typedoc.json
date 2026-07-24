@@ -1,0 +1,22 @@
+{
+  "entryPoints": [
+    "services/index.ts",
+    "monitor/index.ts",
+    "utils/index.ts",
+    "config/index.ts",
+    "constants/index.ts",
+    "types/index.d.ts"
+  ],
+  "out": "docs",
+  "plugin": ["typedoc-plugin-markdown"],
+  "readme": "README.md",
+  "name": "爱乐查小程序 API 文档",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "hideGenerator": true,
+  "theme": "default",
+  "tsconfig": "./tsconfig.json",
+  "githubPages": true,
+  "gitRevision": "main"
+}

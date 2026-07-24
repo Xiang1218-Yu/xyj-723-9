@@ -1,0 +1,7 @@
+node_modules/
+dist/
+docs/
+miniprogram_npm/
+*.min.js
+images/
+untils/list.js

@@ -1,0 +1,7 @@
+node_modules/
+dist/
+docs/
+miniprogram_npm/
+*.min.js
+package-lock.json
+images/huilv/

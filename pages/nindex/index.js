@@ -47,17 +47,17 @@ Page({
   // },
   toidcard: function () {
     wx.navigateTo({
-      url: '../idcard/idcard'
+      url: '/package-query/pages/idcard/idcard'
     })
   },
   toexp:function(){
     wx.navigateTo({
-      url: '../exp/index/index'
+      url: '/package-express/pages/exp/index/index'
     })
   },
   tohuilv:function(){
     wx.navigateTo({
-      url: '../exchangeCal/exchangeCal'
+      url: '/package-exchange/pages/exchangeCal/exchangeCal'
     })
   },
   /**

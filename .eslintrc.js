@@ -1,0 +1,48 @@
+module.exports = {
+  root: true,
+  env: {
+    browser: false,
+    es2021: true,
+    node: true,
+  },
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2021,
+    sourceType: 'module',
+  },
+  plugins: ['@typescript-eslint', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+  ],
+  rules: {
+    'prettier/prettier': 'error',
+    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'warn',
+    '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
+    'no-debugger': 'error',
+    eqeqeq: ['error', 'always'],
+    'no-var': 'error',
+    'prefer-const': 'error',
+    'no-duplicate-imports': 'error',
+  },
+  globals: {
+    wx: 'readonly',
+    App: 'readonly',
+    Page: 'readonly',
+    Component: 'readonly',
+    getApp: 'readonly',
+    getCurrentPages: 'readonly',
+    Behavior: 'readonly',
+  },
+  ignorePatterns: [
+    'node_modules/',
+    'dist/',
+    'docs/',
+    '*.min.js',
+    'miniprogram_npm/',
+  ],
+};

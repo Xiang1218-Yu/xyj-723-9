@@ -1,0 +1,2 @@
+@import '/dist/ionic.app.wxss';
+/* pages/index/index.wxss */
