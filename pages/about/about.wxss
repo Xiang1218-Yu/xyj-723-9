@@ -1,1 +1,1 @@
-@import '../exp/index/index.wxss';  
+@import '/package-express/pages/exp/index/index.wxss';

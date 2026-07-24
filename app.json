@@ -71,12 +71,6 @@
   },
   "debug": false,
   "lazyCodeLoading": "requiredComponents",
-  "permission": {
-    "scope.userLocation": {
-      "desc": "用于获取您的位置信息以提供更好的服务"
-    }
-  },
-  "requiredPrivateInfos": ["scanCode"],
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
