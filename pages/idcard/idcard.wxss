@@ -1,0 +1,42 @@
+@import '/dist/ionic.app.wxss';  
+.swiper {
+  height: 400rpx;
+  width: 100%;
+}
+.swiper image {
+  height: 100%;
+  width: 100%;
+}
+
+.idcard_hide{ 
+ display: none; 
+}
+.idcard_show{ 
+ display: block; 
+}
+
+.bank_hide{ 
+ display: none; 
+}
+.bank_show{ 
+ display: block; 
+}
+
+.phone_hide{ 
+ display: none; 
+}
+.phone_show{ 
+ display: block; 
+}
+.nodata_hide{ 
+ display: none; 
+}
+.nodata_show{ 
+ display: block; 
+}
+.init_hide{ 
+ display: none; 
+}
+.init_show{ 
+ display: block; 
+}

@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/nindex/index",
+    "pages/idcard/idcard",
+    "pages/index/index",
+    "pages/exchangeCal/exchangeCal",
+    "pages/exchangeList/exchangeList",        
+    "pages/currencyList/currencyList",
+    "pages/about/about",
+    "pages/exp/index/index"
+    
+  ],
+  "window": {
+    "navigationBarTitleText": "爱乐查-生活小助手"
+  },
+  "tabBar": {
+    "color": "#a0a0a0",
+    "selectedColor": "#ec5c30",
+    "backgroundColor": "#f2f2f2",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/nindex/index",
+        "text": "首页",
+        "iconPath": "images/tab/tab_home_def@2x.png",
+        "selectedIconPath": "images/tab/tab_home_sel@2x.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "关于",
+        "iconPath": "images/tab/tab_user_def@2x.png",
+        "selectedIconPath": "images/tab/tab_user_sel@2x.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+  }

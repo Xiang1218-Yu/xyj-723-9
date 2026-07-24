@@ -1,0 +1,61 @@
+<view class="home-wrap">
+  <swiper indicator-dots="true"  autoplay="true" interval="5000" duration="1000">
+    <view wx:for="{{banner}}" wx:key="unique">
+      <swiper-item>
+        <view>
+          <navigator url="{{item.target}}"><image src="{{item.image}}" mode="scaleToFill center" class="banner"></image></navigator>
+        </view>
+      </swiper-item>
+    </view>
+  </swiper>
+  <view class="scroll-txt">
+    <text class="scroll-ads">{{txtAds}}</text>
+  </view>
+  <!-- <view class="ads-list">
+    <view class="ads-item" wx:for="{{advertise}}" wx:key="unique" wx:for-item="item">
+      <image src="{{item.image}}" mode="scaleToFill center" class="sub-banner"></image>
+    </view>
+  </view> -->
+  <view class="workbench">
+    <text class="title">服务</text>
+    <view class="list">
+        <view class="items" bindtap="toexp">
+          <image src="../../images/icon/kuaidi.png"></image>
+          <text>全国快递</text>
+        </view>
+      <view class="items" bindtap="toidcard">
+        <image src="../../images/icon/idcard.png"></image>
+        <text>身份归属</text>
+      </view>
+      <view class="items" bindtap="toidcard">
+        <image src="../../images/icon/bank.png"></image>
+        <text>银行归属</text>
+      </view>
+      <view class="items" bindtap="toidcard">
+        <image src="../../images/icon/phone.png"></image>
+        <text>手机归属</text>
+      </view>
+      <view class="items" bindtap="tohuilv">
+        <image src="../../images/icon/huilv.png"></image>
+        <text>银行汇率</text>
+      </view>
+    </view>
+  
+  </view>
+  <view class="workbench">
+    <text class="title">期待中</text>
+    <view class="list">
+      <view class="items">
+        <image src="../../images/icon/kuaidi.png" class="service-icon"></image>
+        <text>全国快递</text>
+      </view>
+      <view class="items">
+        <image src="../../images/icon/qidai.png" class="service-icon"></image>
+        <text>添加中</text>
+      </view>
+    </view>
+  </view>
+   <!-- <view class="scroll-txt">
+    <text class="scroll-ads"></text>
+  </view> -->
+</view>

@@ -1,0 +1,85 @@
+<view class="content">
+	<view class="list list-inset">
+		<label class="item item-input">
+			<text class="icon ion-search placeholder-icon"></text>
+			<input type="text" bindblur="iquery" placeholder="可查手机号|身份证|银行卡归属地信息" />
+		</label>
+   
+    <view class="padding">
+		  <button class="button button-block"  bindtap="search">查询</button>
+    </view>
+	</view>
+</view>
+
+<view class="content">
+    <view class="{{idcard?'idcard_show':'idcard_hide'}}">
+          <view class="card">
+            <view class="item item-divider">
+              号码：{{idcarddata.idcard}}
+            </view>
+              <view class="item item-divider">
+              性别：{{idcarddata.sex}}
+            </view>
+              <view class="item item-divider">
+              生日：{{idcarddata.cnEra}}
+            </view>
+              <view class="item item-divider">
+              生肖：{{idcarddata.zodiac}}
+            </view>
+              <view class="item item-divider">
+              星座：{{idcarddata.constellation}}
+            </view>
+          
+            <view class="item item-divider">
+              归属：{{idcarddata.area}}
+            </view>
+          </view>
+    </view>
+     <view class="{{phone?'phone_show':'phone_hide'}}">
+          <view class="card">
+            <view class="item item-divider">
+              号码：{{phonedata.mobile}}
+            </view>
+            <view class="item item-divider">
+              归属：{{phonedata.phoneArea}}
+            </view>
+          </view>
+    </view>
+     <view class="{{bank?'bank_show':'bank_hide'}}">
+          <view class="card">
+            <view class="item item-divider">
+              银行卡号：{{bankdata.bankCard}}
+            </view>
+              <view class="item item-divider">
+              银行名称：{{bankdata.bankName}}
+            </view>
+              <view class="item item-divider">
+              卡片类型：{{bankdata.cardType}}
+            </view>
+              <view class="item item-divider">
+              银行网站：{{bankdata.site}}
+            </view>
+            <view class="item item-divider">
+              客服电话：{{bankdata.bankMobile}}
+            </view>
+            <view class="item item-divider">
+              银行图标：<image style="width: 180px; height: 50px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{bankdata.logo}}"></image>
+            </view>
+          </view>
+    </view>
+</view>
+ 
+<!-- <view class="{{nodata?'loading-container visible active':'loading-container'}}">
+	<view class="loading">
+		<text>查无数据，请重试...</text>
+	</view>
+</view> 
+<view class="{{inrequest?'loading-container visible active':'loading-container'}}">
+	<view class="loading">
+		<text>正在载入数据，请稍后...</text>
+	</view>
+</view>  -->
+
+<view class="bar bar-footer bar-light">
+	<view class="title">爱乐查</view>
+</view> 

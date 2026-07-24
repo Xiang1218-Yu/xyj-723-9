@@ -1,0 +1,43 @@
+
+<!--index.wxml-->
+<view class="container">
+  <view class="track-bg">
+    <image class="logo" src="/images/logo.png" mode="widthFix"></image>
+    <view class="track-input-block">
+      <icon type="search" size="15" color="purple" />
+      <input class="track-input" placeholder="请输入快递单号" bindconfirm="track" />
+      <image src="/images/scan.png" mode="widthFix" class="i-scan" bindtap="scanNumber"></image>
+    </view>
+  </view>
+ <block wx:if="{{tracking}}">
+    <view class="spinner"></view>
+  </block>
+  
+ <view class="track-history">
+   <view class="track-content">
+    <view class="track-content-title">
+      <label class="bold" style="font-size:20px;margin-left:40%;">{{result.data.no.name}}</label>
+    </view>
+    <view class="track-content-title" style="margin-bottom:15rpx;">
+      <label  style="font-size:12px;margin-left:40%;">{{result.data.no.no}}</label>
+    </view>
+    
+    <view class="track-content-list">
+       <block wx:if="{{result.data.reason!=''}}">
+        <view class="track-content-time" style="margin-left:40%;">{{result.data.reason}}</view>
+      </block>
+      <view class="track-content-item" wx:for="{{trans}}" wx:key="{{item}}">
+        <view>
+          <text wx:if="{{index==0}}" class="track-content-time-dot track-content-time-dot-first"></text>
+          <text wx:elif="{{index==trans.length-1}}" class="track-content-time-dot track-content-time-dot-last"></text>
+          <text wx:else class="track-content-time-dot"></text>
+          <text class="track-content-time">{{item.time}}</text>
+        </view>
+        <text wx:if="{{index==0}}" class="track-content-event" style="color:#ff6000">{{item.event}}</text>
+        <text wx:else class="track-content-event">{{item.event}}</text>
+
+      </view>
+    </view>
+  </view>
+  </view>
+</view>

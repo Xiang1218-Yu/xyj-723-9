@@ -1,0 +1,31 @@
+<!--index.wxml-->
+<view class="container">
+<view class="track-history">
+   <view class="track-content">
+    <view class="track-content-list">
+      <view class="track-content-item">
+          <view>
+           <text class="track-content-time">2017年12月20日</text>
+            <text class="track-content-event">上线【全国快递查询】</text>
+        </view>
+        <view>
+           <text class="track-content-time"> 2017年7月20日</text>
+            <text class="track-content-event">【银行汇率在线查询】</text>
+        </view>
+        <view>
+           <text class="track-content-time"> 2017年7月20日</text>
+            <text class="track-content-event">www.zhaotool.com域名购买并开始备案，并开始收集各种工具，同时准备小程序版本</text>
+        </view>
+        <view>
+           <text class="track-content-time">2017年7月25日</text>
+            <text class="track-content-event">"爱乐查"第一版上线，【手机号归属地】</text>
+        </view>
+        <view>
+           <text class="track-content-time">2017年6月14日</text>
+            <text class="track-content-event">认证通过</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  </view>
+</view>
