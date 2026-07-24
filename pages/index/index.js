@@ -12,6 +12,7 @@ Page({
     bankdata: {}
   },
   onLoad: function (option) {
+    var that = this;
     var q = option.q;
     wx.showToast({
       title: '加载中',

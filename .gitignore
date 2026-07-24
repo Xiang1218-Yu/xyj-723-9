@@ -8,3 +8,11 @@ yarn-error.log*
 test/unit/coverage
 test/e2e/reports
 selenium-debug.log
+
+# 工程化产物
+docs/
+images-dist/
+miniprogram_npm/
+scripts/.mp-private.key
+*.tsbuildinfo
+# TS 编译产物（源码在 src/，编译到各目录）：可按需保留在仓库或忽略

@@ -1,4 +1,5 @@
 var common = require('../../../untils/exputil.js');
+// 路径深度与原 pages/exp/index 相同，require 保持不变
 var app = getApp()
 Page({
   data: {

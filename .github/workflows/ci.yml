@@ -1,0 +1,93 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main, master]
+    tags: ['v*']
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  quality:
+    name: 代码质量检查
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: 安装依赖
+        run: npm ci
+      - name: 类型检查
+        run: npm run type-check
+      - name: ESLint
+        run: npm run lint
+      - name: Prettier 校验
+        run: npm run format:check
+
+  build:
+    name: 编译构建
+    needs: quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - name: TypeScript 编译
+        run: npm run build
+      - name: 生成文档
+        run: npm run docs
+      - name: 上传文档产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-docs
+          path: docs/
+
+  docs-deploy:
+    name: 部署文档到 GitHub Pages
+    needs: build
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build && npm run docs
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/
+      - uses: actions/deploy-pages@v4
+
+  release:
+    name: 上传微信体验版
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - name: 编译
+        run: npm run build
+      - name: 上传到微信小程序平台
+        env:
+          MP_APPID: ${{ secrets.MP_APPID }}
+          MP_PRIVATE_KEY: ${{ secrets.MP_PRIVATE_KEY }}
+          CI_VERSION: ${{ github.ref_name }}
+          CI_DESC: ${{ github.event.head_commit.message }}
+        run: npm run ci:upload

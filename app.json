@@ -3,13 +3,32 @@
     "pages/nindex/index",
     "pages/idcard/idcard",
     "pages/index/index",
-    "pages/exchangeCal/exchangeCal",
-    "pages/exchangeList/exchangeList",        
-    "pages/currencyList/currencyList",
-    "pages/about/about",
-    "pages/exp/index/index"
-    
+    "pages/about/about"
   ],
+  "subPackages": [
+    {
+      "root": "subpackages/exchange",
+      "name": "exchange",
+      "pages": [
+        "exchangeCal/exchangeCal",
+        "exchangeList/exchangeList",
+        "currencyList/currencyList"
+      ]
+    },
+    {
+      "root": "subpackages/express",
+      "name": "express",
+      "pages": [
+        "index/index"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/nindex/index": {
+      "network": "wifi",
+      "packages": ["exchange", "express"]
+    }
+  },
   "window": {
     "navigationBarTitleText": "爱乐查-生活小助手"
   },
@@ -38,4 +57,4 @@
     "downloadFile": 10000
   },
   "debug": true
-  }
+}
