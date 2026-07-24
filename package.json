@@ -1,0 +1,44 @@
+{
+  "name": "ailecha-miniprogram",
+  "version": "1.0.0",
+  "description": "爱乐查-生活小助手微信小程序",
+  "scripts": {
+    "dev": "echo \"开发模式\"",
+    "build": "tsc --noEmit && echo \"构建检查完成\"",
+    "lint": "eslint . --ext .ts,.js",
+    "lint:fix": "eslint . --ext .ts,.js --fix",
+    "format": "prettier --write \"**/*.{ts,js,json,wxml,wxss}\"",
+    "format:check": "prettier --check \"**/*.{ts,js,json,wxml,wxss}\"",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky install",
+    "docs": "typedoc"
+  },
+  "keywords": [
+    "wechat-miniprogram",
+    "miniprogram"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/wechat-miniprogram": "^3.4.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^14.0.0",
+    "prettier": "^3.0.0",
+    "typedoc": "^0.25.0",
+    "typescript": "^5.1.0"
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,wxml,wxss,md}": [
+      "prettier --write"
+    ]
+  }
+}

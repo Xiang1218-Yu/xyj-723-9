@@ -1,5 +1,5 @@
 //所有货币信息
-var list = require('../../untils/list.js');
+var list = require('../../../untils/list.js');
 var allDataList = list.allDataList;
 Page({
     //页面数据

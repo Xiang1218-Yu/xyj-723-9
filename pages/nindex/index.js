@@ -1,7 +1,6 @@
-//index.js
-//获取应用实例
-var app = getApp()
-var util = require('../../untils/untils.js')  
+const app = getApp();
+const { homeApi } = require('../../src/services/api.js');
+const { pageStart, pageEnd } = require('../../src/monitor/index.js');
 
 Page({
   data: {
@@ -12,88 +11,73 @@ Page({
     txtAds: null,
     advertise: null
   },
-  /*
-  * 首页banner
-  */
-  setBanner: function () {
-    let that = this;
-    util.fetch(app.globalData.gwapi + '/v1/h/images', function (data) {
-      that.setData({
-        banner: data.data
-      });
-    });
-  },
-  /**
-   * 首页文字广告
-   */
-  setTxtAds: function () {
-    let that = this;
-    util.fetch(app.globalData.gwapi + '/v1/wx/adText', function (data) {
-      that.setData({
-        txtAds: data.data.text
-      });
-    });
-  },
-  /**
-   * 首页两块子banner
-   */
-  // setSubBanner: function(){
-  //   let that = this;
-  //   util.fetch('http://api.cyb.kuaiqiangche.com/event/advertise/index', function (data) {
-  //     that.setData({
-  //       advertise: data.data
-  //     });
-  //   });
-  // },
-  toidcard: function () {
-    wx.navigateTo({
-      url: '../idcard/idcard'
-    })
-  },
-  toexp:function(){
-    wx.navigateTo({
-      url: '../exp/index/index'
-    })
-  },
-  tohuilv:function(){
-    wx.navigateTo({
-      url: '../exchangeCal/exchangeCal'
-    })
-  },
-  /**
-   * 模块入口
-   */
-  setModule: function(){
 
+  setBanner() {
+    const that = this;
+    homeApi
+      .getBanners()
+      .then(data => {
+        that.setData({
+          banner: data
+        });
+      })
+      .catch(err => {
+        console.error('获取banner失败:', err);
+      });
   },
-  /**
-   * 入口
-   */
-  onLoad: function () {
-    var that = this;
-    that.setBanner();
-    that.setTxtAds();
-    // that.setSubBanner();
-    that.setModule();
+
+  setTxtAds() {
+    const that = this;
+    homeApi
+      .getAdText()
+      .then(data => {
+        that.setData({
+          txtAds: data.text
+        });
+      })
+      .catch(err => {
+        console.error('获取广告文案失败:', err);
+      });
+  },
+
+  toidcard() {
+    wx.navigateTo({
+      url: '/packageTools/pages/idcard/idcard'
+    });
+  },
+
+  toexp() {
+    wx.navigateTo({
+      url: '/packageTools/pages/exp/index/index'
+    });
+  },
+
+  tohuilv() {
+    wx.navigateTo({
+      url: '/packageTools/pages/exchangeCal/exchangeCal'
+    });
+  },
+
+  setModule() {},
+
+  onLoad() {
+    const startTime = Date.now();
+    pageStart('nindex');
+    this.setBanner();
+    this.setTxtAds();
+    this.setModule();
     wx.showShareMenu({
       withShareTicket: true
-    })  
+    });
+    pageEnd('nindex', startTime);
   },
-  onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
+
+  onShareAppMessage() {
     return {
       title: '搜【爱乐查】',
       path: '/pages/nindex/index',
-      success: function (res) {
-        // 转发成功
-      },
-      fail: function (res) {
-        // 转发失败
-      }
-    }
-  },
-   
+      success() {},
+      fail() {}
+    };
+  }
 });

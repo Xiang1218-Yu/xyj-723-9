@@ -8,3 +8,12 @@ yarn-error.log*
 test/unit/coverage
 test/e2e/reports
 selenium-debug.log
+dist/
+miniprogram_npm/
+*.log
+.env
+.env.local
+docs/
+.husky/_
+project.config.json
+project.private.config.json

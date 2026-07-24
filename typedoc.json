@@ -1,0 +1,28 @@
+{
+  "entryPoints": [
+    "src/services/request.ts",
+    "src/services/api.ts",
+    "src/monitor/index.ts",
+    "src/utils/index.ts",
+    "src/constants/index.ts",
+    "src/config/cdn.ts",
+    "src/types/index.d.ts",
+    "src/types/pages.d.ts",
+    "app.ts"
+  ],
+  "out": "docs",
+  "name": "爱乐查小程序 API 文档",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "hideGenerator": true,
+  "theme": "default",
+  "readme": "README.md",
+  "tsconfig": "tsconfig.json",
+  "excludeExternals": true,
+  "navigationLinks": {
+    "首页": "/pages/nindex/index",
+    "汇率计算": "/packageTools/pages/exchangeCal/exchangeCal",
+    "身份查询": "/packageTools/pages/idcard/idcard"
+  }
+}

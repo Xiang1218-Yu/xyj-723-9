@@ -1,22 +1,22 @@
-const monitor = require('./src/monitor/index.js');
+import { setReportUrl, reportPerformance } from './src/monitor';
 
 App({
   globalData: {
     g_isPlayingMusic: false,
     g_currentMusicPostId: null,
     gwapi: 'https://www.zhaotool.com',
-    systemInfo: null
-  },
+    systemInfo: null as WechatMiniprogram.SystemInfo | null
+  } as GlobalData,
   tradeCurrency: {
     name: '美元',
     description: 'USD',
     comments: 'U.S.Dollar'
-  },
+  } as Currency,
   debitCurrency: {
     name: '人民币',
     description: 'CNY',
     comments: 'Yuan Renminbi'
-  },
+  } as Currency,
 
   onLaunch() {
     console.log('App Launch');
@@ -32,19 +32,19 @@ App({
     console.log('App Hide');
   },
 
-  onError(msg) {
+  onError(msg: string) {
     console.error('App Error:', msg);
   },
 
   initMonitor() {
-    monitor.setReportUrl('');
+    setReportUrl('');
   },
 
   collectSystemInfo() {
     try {
       const systemInfo = wx.getSystemInfoSync();
       this.globalData.systemInfo = systemInfo;
-      monitor.reportPerformance('app_launch', Date.now(), {
+      reportPerformance('app_launch', Date.now(), {
         platform: systemInfo.platform,
         system: systemInfo.system,
         version: systemInfo.version
