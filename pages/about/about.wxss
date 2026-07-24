@@ -1,1 +1,31 @@
-@import '../exp/index/index.wxss';  
+/* about 页样式：原先 @import 了 express 分包页面的样式，分包迁移后主包无法跨包引用，
+   这里内联 about 实际用到的少量轨迹样式类。 */
+
+.track-history {
+  padding: 20rpx;
+  width: 90%;
+  margin-top: -20rpx;
+}
+
+.track-content {
+  font-size: 28rpx;
+  padding: 20rpx;
+  padding-left: 40rpx;
+}
+
+.track-content-item {
+  padding: 12rpx 0;
+}
+
+.track-content-time {
+  display: inline-block;
+  color: #3a87ad;
+  margin-bottom: 8rpx;
+}
+
+.track-content-event {
+  display: block;
+  color: #959595;
+  padding-left: 50rpx;
+  line-height: 1.3;
+}

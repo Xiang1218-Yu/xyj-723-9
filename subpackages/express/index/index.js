@@ -13,7 +13,7 @@ Page({
     return {
       title: '国际包裹查询工具',
       desc: '',
-      path: '/pages/exp/index/index'
+      path: '/subpackages/express/index/index'
     }
   },
   callTrackApi(num) {
