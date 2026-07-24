@@ -1,4 +1,5 @@
 var common = require('../../../untils/exputil.js');
+// 路径深度与原 pages/exp/index 相同，require 保持不变
 var app = getApp()
 Page({
   data: {
@@ -12,7 +13,7 @@ Page({
     return {
       title: '国际包裹查询工具',
       desc: '',
-      path: '/pages/exp/index/index'
+      path: '/subpackages/express/index/index'
     }
   },
   callTrackApi(num) {

@@ -1,0 +1,11 @@
+{
+  "entryPoints": ["src"],
+  "entryPointStrategy": "expand",
+  "out": "docs",
+  "name": "爱乐查小程序 API 文档",
+  "readme": "README.md",
+  "exclude": ["**/node_modules/**", "**/*.js"],
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "hideGenerator": false
+}

@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# 提交前做一次类型检查，防止类型错误进入主干
+npm run type-check

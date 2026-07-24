@@ -52,12 +52,12 @@ Page({
   },
   toexp:function(){
     wx.navigateTo({
-      url: '../exp/index/index'
+      url: '/subpackages/express/index/index'
     })
   },
   tohuilv:function(){
     wx.navigateTo({
-      url: '../exchangeCal/exchangeCal'
+      url: '/subpackages/exchange/exchangeCal/exchangeCal'
     })
   },
   /**

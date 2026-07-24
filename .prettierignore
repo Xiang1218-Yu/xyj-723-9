@@ -1,0 +1,8 @@
+node_modules/
+dist/
+images/
+miniprogram_npm/
+*.js
+*.wxml
+*.wxss
+package-lock.json
