@@ -1,0 +1,21 @@
+{
+  "entryPoints": [
+    "src/services/request.ts",
+    "src/services/api.ts",
+    "src/monitor/index.ts",
+    "src/utils/index.ts",
+    "src/constants/index.ts",
+    "src/config/cdn.ts"
+  ],
+  "out": "docs",
+  "name": "爱乐查小程序 API 文档",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "hideGenerator": true,
+  "theme": "default",
+  "readme": "README.md",
+  "tsconfig": "tsconfig.json",
+  "plugin": [],
+  "excludeExternals": true
+}
