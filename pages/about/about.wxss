@@ -1,1 +1,28 @@
-@import '../exp/index/index.wxss';  
+.track-history {
+  padding: 20rpx;
+  width: 90%;
+  margin-top: -20rpx;
+}
+
+.track-content {
+  font-size: 28rpx;
+  padding: 20rpx;
+  padding-left: 40rpx;
+}
+
+.track-content-item {
+  padding: 12rpx 0;
+}
+
+.track-content-time {
+  display: inline-block;
+  color: #3a87ad;
+  margin-bottom: 8rpx;
+}
+
+.track-content-event {
+  display: block;
+  color: #959595;
+  padding-left: 50rpx;
+  line-height: 1.3;
+}

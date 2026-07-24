@@ -14,7 +14,7 @@
     </view>
     <view class="item">
         <view class="itemLeft fl">
-            <image src="../../images/huilv/{{tradeCurrency.description}}.png" class="flag" bindtap="changeTrans"></image>
+            <image src="../../../images/huilv/{{tradeCurrency.description}}.png" class="flag" bindtap="changeTrans"></image>
         </view>
         <view class="itemRight fr">
             <input class="fr" placeholder="请输入交易金额" bindinput="calInput" />
@@ -34,7 +34,7 @@
     <view class="item">
         <view class="itemLeft fl">
             <picker bindchange="bindPickerChange" value="{{index}}" range="{{debitArray}}">
-                <image src="../../images/huilv/{{debitCurrency.description}}.png" class="flag"></image>
+                <image src="../../../images/huilv/{{debitCurrency.description}}.png" class="flag"></image>
             </picker>
         </view>
         <view class="itemRight fr">
