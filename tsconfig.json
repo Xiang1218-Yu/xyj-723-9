@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "ESNext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "lib": ["ES2020"],
     "strict": true,
@@ -21,19 +21,21 @@
       "@/services/*": ["src/services/*"],
       "@/types/*": ["src/types/*"],
       "@/constants/*": ["src/constants/*"],
-      "@/utils/*": ["src/utils/*"],
-      "@/monitor/*": ["src/monitor/*"]
+      "@/monitor/*": ["src/monitor/*"],
+      "@/config/*": ["src/config/*"]
     },
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "allowJs": true,
+    "checkJs": false
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
-    "types/**/*.d.ts"
+    "src/**/*.js",
+    "pages/**/*.js",
+    "packageTools/**/*.js",
+    "app.ts",
+    "app.js"
   ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "miniprogram_npm"
-  ]
+  "exclude": ["node_modules", "dist", "miniprogram_npm", "docs"]
 }

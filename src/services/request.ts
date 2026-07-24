@@ -75,8 +75,7 @@ class Request {
     const error = new Error(data.message || ERROR_MESSAGES.UNKNOWN_ERROR);
     reportError('apiError', {
       code: data.code,
-      message: data.message,
-      url: window.location?.href || ''
+      message: data.message
     });
     reject(error);
   }

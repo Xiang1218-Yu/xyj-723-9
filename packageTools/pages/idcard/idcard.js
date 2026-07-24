@@ -1,117 +1,105 @@
-var app = getApp()
-var util = require('../../untils/untils.js')  
+const { currencyApi } = require('../../../src/services/api.js');
+const { pageStart, pageEnd, reportError } = require('../../../src/monitor/index.js');
+
 Page({
   data: {
-    movies: [
-     
-    ],
-    q:'',
+    movies: [],
+    q: '',
     idcard: false,
     bank: false,
     phone: false,
-    nodata:false,
-    init:true,
-    inrequest:false,
-    phonedata:{},
-    idcarddata:{},
-    bankdata:{}
+    nodata: false,
+    init: true,
+    inrequest: false,
+    phonedata: {},
+    idcarddata: {},
+    bankdata: {}
   },
-  onLoad: function () {
-    var that = this;
-    //网络访问，获取轮播图的图片  
-    util.getBanner(function (data) {
-      that.setData({
-        movies: data.data
-      })
-    }); 
+
+  onLoad() {
+    const startTime = Date.now();
+    pageStart('idcard');
     wx.showShareMenu({
       withShareTicket: true
-    })  
+    });
+    pageEnd('idcard', startTime);
   },
-  onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
+
+  onShareAppMessage() {
     return {
       title: '查归属，搜【爱乐查】',
-      path: '/pages/home/home',
-      success: function (res) {
-        // 转发成功
-      },
-      fail: function (res) {
-        // 转发失败
-      }
-    }
+      path: '/pages/nindex/index',
+      success() {},
+      fail() {}
+    };
   },
-  qput: function (e) {
+
+  qput(e) {
     this.setData({
       q: e.detail.value
-    })
+    });
   },
-  iquery: function (e) {
+
+  iquery(e) {
     this.setData({
       q: e.detail.value,
-      idcard:false,
+      idcard: false,
       bank: false,
       phone: false
-    })
+    });
   },
-  clearch:function(){
+
+  clearch() {
     this.setData({
       q: '',
-      bankdata:'',
+      bankdata: '',
       idcarddata: '',
-      phonedata: '',
-    })
-    return;
+      phonedata: ''
+    });
   },
-  search: function () {
-    var that = this;
-    var q = this.data.q;
-  
+
+  search() {
+    const q = this.data.q;
+    const that = this;
+
     wx.showToast({
       title: '加载中',
       icon: 'loading',
       duration: 200
-    })
-      wx.request({
-        url: app.globalData.gwapi +'/v1/wx/info',
-        data: {"q":q},
-        method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-        success: function (res) {
-          if(res.data.sid=='S100'){
-            wx.showToast({
-              title: res.data.data.bankName,
-              icon: 'success',
-              duration: 1200
-            })
-            that.setData({ bankdata: res.data.data, bank: true });
-          }
-          if (res.data.sid == 'S101') {
-            that.setData({ phonedata: res.data.data, phone: true });
-          }
-          if (res.data.sid == 'S102') {
-            that.setData({ idcarddata: res.data.data, idcard: true  });
-          }
-          if (res.data.code!='0'){
-              wx.showToast({
-                title: res.data.msg,
-                icon: 'success',
-                duration: 800
-              })
-          }
-        // that.setData({init:false });
-        
-          console.log(res.data);
-          return;
-        },
-        fail: function () {
-          // fail
-        },
-        complete: function () {
-          // complete
+    });
+
+    currencyApi
+      .queryInfo(q)
+      .then(res => {
+        if (res.sid === 'S100') {
+          wx.showToast({
+            title: res.data.bankName,
+            icon: 'success',
+            duration: 1200
+          });
+          that.setData({ bankdata: res.data, bank: true });
+        }
+        if (res.sid === 'S101') {
+          that.setData({ phonedata: res.data, phone: true });
+        }
+        if (res.sid === 'S102') {
+          that.setData({ idcarddata: res.data, idcard: true });
+        }
+        if (res.code !== '0') {
+          wx.showToast({
+            title: res.msg,
+            icon: 'success',
+            duration: 800
+          });
         }
       })
-  },
-})  
+      .catch(err => {
+        reportError('apiError', { message: '查询失败' }, err);
+        wx.showToast({
+          title: '查询失败，请重试',
+          icon: 'none',
+          duration: 1000
+        });
+      });
+  }
+});
