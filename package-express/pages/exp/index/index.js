@@ -1,4 +1,4 @@
-var common = require('../../../untils/exputil.js');
+var common = require('../../../../untils/exputil.js');
 var app = getApp()
 Page({
   data: {
@@ -12,7 +12,7 @@ Page({
     return {
       title: '国际包裹查询工具',
       desc: '',
-      path: '/pages/exp/index/index'
+      path: '/package-express/pages/exp/index/index'
     }
   },
   callTrackApi(num) {

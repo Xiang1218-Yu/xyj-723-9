@@ -1,5 +1,5 @@
 var app = getApp()
-var util = require('../../untils/untils.js')  
+var util = require('../../../untils/untils.js')  
 Page({
   data: {
     movies: [
@@ -35,7 +35,7 @@ Page({
     }
     return {
       title: '查归属，搜【爱乐查】',
-      path: '/pages/home/home',
+      path: '/pages/nindex/index',
       success: function (res) {
         // 转发成功
       },

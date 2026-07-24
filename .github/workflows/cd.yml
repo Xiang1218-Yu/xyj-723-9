@@ -1,0 +1,92 @@
+name: CD - Deploy Preview
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy-preview:
+    name: Build & Generate Docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Build TypeScript
+        run: npm run build:prod
+
+      - name: Compress images
+        run: npm run images:compress
+        continue-on-error: true
+
+      - name: Generate API documentation
+        run: npm run docs
+
+      - name: Deploy docs to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages
+
+      - name: Upload miniprogram artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: miniprogram-release
+          path: |
+            app.js
+            app.json
+            app.wxss
+            sitemap.json
+            project.config.json
+            pages/**/*
+            package-*/**/*
+            services/**/*.js
+            monitor/**/*.js
+            utils/**/*.js
+            config/**/*.js
+            constants/**/*.js
+            untils/**/*
+            images/**/*
+            dist/**/*
+          retention-days: 30
+
+  generate-docs:
+    name: Generate Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate TypeDoc documentation
+        run: npm run docs
+
+      - name: Upload docs
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-docs
+          path: ./docs
+          retention-days: 30

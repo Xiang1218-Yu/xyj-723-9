@@ -1,17 +1,49 @@
 {
   "pages": [
     "pages/nindex/index",
-    "pages/idcard/idcard",
-    "pages/index/index",
-    "pages/exchangeCal/exchangeCal",
-    "pages/exchangeList/exchangeList",        
-    "pages/currencyList/currencyList",
-    "pages/about/about",
-    "pages/exp/index/index"
-    
+    "pages/about/about"
   ],
+  "subpackages": [
+    {
+      "root": "package-exchange",
+      "name": "package-exchange",
+      "pages": [
+        "pages/exchangeCal/exchangeCal",
+        "pages/exchangeList/exchangeList",
+        "pages/currencyList/currencyList"
+      ]
+    },
+    {
+      "root": "package-query",
+      "name": "package-query",
+      "pages": [
+        "pages/idcard/idcard",
+        "pages/index/index"
+      ]
+    },
+    {
+      "root": "package-express",
+      "name": "package-express",
+      "pages": [
+        "pages/exp/index/index"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/nindex/index": {
+      "network": "wifi",
+      "packages": ["package-exchange", "package-query"]
+    },
+    "pages/about/about": {
+      "network": "all",
+      "packages": ["package-express"]
+    }
+  },
   "window": {
-    "navigationBarTitleText": "爱乐查-生活小助手"
+    "navigationBarTitleText": "爱乐查-生活小助手",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f5f5"
   },
   "tabBar": {
     "color": "#a0a0a0",
@@ -37,5 +69,14 @@
     "request": 10000,
     "downloadFile": 10000
   },
-  "debug": true
-  }
+  "debug": false,
+  "lazyCodeLoading": "requiredComponents",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于获取您的位置信息以提供更好的服务"
+    }
+  },
+  "requiredPrivateInfos": ["scanCode"],
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

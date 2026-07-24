@@ -1,0 +1,48 @@
+{
+  "name": "ailecha-miniprogram",
+  "version": "2.0.0",
+  "description": "爱乐查 - 生活小助手微信小程序（工程化版本）",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc --project tsconfig.json",
+    "build:prod": "tsc --project tsconfig.json --sourceMap false",
+    "lint": "eslint --ext .ts,.js .",
+    "lint:fix": "eslint --ext .ts,.js --fix .",
+    "format": "prettier --write \"**/*.{ts,js,json,wxml,wxss,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,js,json,wxml,wxss,md}\"",
+    "type-check": "tsc --noEmit",
+    "prepare": "husky install",
+    "docs": "typedoc --options typedoc.json",
+    "images:compress": "node scripts/compress-images.js",
+    "images:cdn": "node scripts/upload-cdn.js",
+    "ci": "npm run type-check && npm run lint && npm run build"
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,wxml,wxss}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.2",
+    "miniprogram-api-typings": "^3.12.0",
+    "prettier": "^3.2.5",
+    "sharp": "^0.33.2",
+    "typedoc": "^0.25.9",
+    "typedoc-plugin-markdown": "^3.17.1",
+    "typescript": "^5.4.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "license": "MIT"
+}

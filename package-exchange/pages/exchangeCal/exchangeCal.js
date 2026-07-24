@@ -1,5 +1,5 @@
 //所有货币信息
-var list = require('../../untils/list.js');
+var list = require('../../../untils/list.js');
 var allDataList = list.allDataList;
 var app = getApp()
 //exchangeCal页面
